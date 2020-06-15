@@ -22,10 +22,12 @@ $ git clone https://github.com/joseigbv/xcramfs.git
 
 Edit 'search.c' and set firmware file and signature bytes:
 
+```
 ...
 #define FNAME "openrg.rta9211w_6_0_18_1_11.img"
 const char PAT[] = { 0x45, 0x3d, 0xcd, 0x28 };
 ...
+```
 
 Compile:
 
@@ -71,9 +73,11 @@ Fsid:           0x08 0x18 0x79 0x2b 0x00 0x00 0x00 0x00 0x0a 0x02 0x00 0x00 0xa4
 Name:           0x08 0x18 0x79 0x2b 0x00 0x00 0x00 0x00 0x0a 0x02 0x00 0x00 0xa4 0x01 0x00 0x00
 
 
-# 1490944 / 512 = 2912 
-# 0x00350000 / 512 = 6784
+(1490944 / 512 = 2912)
+(0x00350000 / 512 = 6784)
+
 $ dd if=openrg.rta9211w_6_0_18_1_11.img of=data.cramfs skip=2912 count=6784
+```
 
 Extract the filesystem:
 
@@ -100,12 +104,13 @@ x/bin/busybox (file)
 x/bin/dhcp6c (file)
 x/bin/dhcp6s (file)
 ...
-
 ```
 
 Create library links:
 
-# ln-libs.sh 
+```
+$ ln-libs.sh 
+```
 
 We can now use qemu to launch and debug the binaries (e.g.)
 
